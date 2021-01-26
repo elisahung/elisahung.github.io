@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>洪逸婷作品展示</title>
+<link href="package\all.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" >
+
+var display=[
+		"00.jpg",
+		"01.jpg",
+		"tnml.jpg",
+		"tnml01.html",
+		"tnml02.html",
+		"tnmlKid.jpg",
+		"tnml03.html",
+		"tnml04.html",
+		"tnmlSen.jpg",
+		"tnml05.html",
+		"tnml06.html",
+		"tnml07.html",
+		"cfam.jpg",
+		"cfam.html",
+		"1111Love.jpg",
+		"1111Love.html",
+		
+		"02.jpg",
+		"style01.jpg",
+		"style01.html",
+		"style02.jpg",
+		"style02.html",
+		"style03.jpg",
+		"style03.html",
+		"style04.jpg",
+		"style04.html",
+		"style05.jpg",
+		"style05.html",
+		"style06.jpg",
+		"style06.html",
+		"style07.jpg",
+		"style07-1.html",
+		"style07-2.html",
+		"style07-3.html",
+		"style08.jpg",
+		"style08.html",
+		"style09.jpg",
+
+		"03.jpg",
+		"hpa.jpg",
+		"hpa01.html",
+		"hpa02.html",
+		"hpa03.html",
+		"tpbg1.jpg",
+		"tpbg2.jpg",
+		"tpbg2.html",
+
+		"menu"];
+
+var displayTitle=[
+		"大綱",
+		"滿意自信的設計",
+		"專案-臺南市立圖書館",
+		"南市圖首頁",
+		"南市圖區圖",
+		"南市圖-兒童版",
+		"兒童版V1",
+		"兒童版V2",
+		"南市圖-樂齡版",
+		"樂齡版V1",
+		"樂齡版V2",
+		"樂齡版V3",
+		"標案-嘉義市立美術館",
+		"嘉美館首頁",
+		"專案-1111光棍網",
+		"光棍網首頁",
+
+		"駕馭多元的風格",
+		"文藝活動",
+		"文化快遞新改版",
+		"休閒觀光",
+		"二林農觀網",
+		"清新旅遊",
+		"彰化旅遊網",
+		"專業資訊",
+		"中央畜產會官網",
+		"專業質感",
+		"國家濕地保育網站",
+		"活潑教育",
+		"百萬家庭節電競賽",
+		"後臺系統",
+		"食管署管考系統1",
+		"食管署管考系統2",
+		"食管署管考系統3",		
+		"UI設計",
+		"網拓會人力銀行app",
+		"向量插畫",
+
+
+		"最具挑戰的專案",
+		"衛生福利部國民健康署",
+		"提版1",
+		"提版2",
+		"最終版",		
+		"台北植物園園區導覽網",
+		"台北植物園標本館",
+		"首頁展示"];
+
+for(l=0;l<display.length;l++){
+	var a= new Image();
+	a.src = display[l];	
+}
+function showTime(fileName){
+	for(k=0;k<timeShow.length;k++){
+		if(fileName == timeShow[k][0]){
+			return timeShow[k][1];	
+		}
+	}
+	return "";
+}
+
+//簡報時間提示
+var timeShow = [
+	["7.jpg"," "],
+	["21.jpg"," "],
+	["30.jpg"," "],
+	["36.jpg"," "]
+];
+
+//目錄資料
+var dir = [
+	["目錄","00.jpg"],
+	["滿意自信的設計","01.jpg"],
+	["駕馭多元的風格","02.jpg"],
+	["最具挑戰的專案","03.jpg"],
+
+	["目錄頁","menu"]
+];
+
+
+var i=0;
+
+function gotoNext(){
+	i++;
+	if(i>=display.length){
+		i=0;
+	}
+	show();
+}
+function gotoPre(){
+	i--;
+	if(i<0){
+		i=display.length-1;
+	}	
+	show();
+}
+
+function show(){		
+    document.getElementById('pageNav').style.display = "block";
+	if(display[i].indexOf("menu")!=-1){
+		//最後一頁
+		document.getElementById("iframe").style.display = "none";
+		document.getElementById("display").style.display = "none";
+		document.getElementById("display").src = "package/loading.png";
+		document.getElementById("iframe").src = 'package/loading.html';
+		document.getElementById('pageNav').style.display = "none";
+		document.getElementById('allMenu').style.display = "block";		
+	}else if( display[i].indexOf("htm")==-1){
+		document.getElementById("display").style.display = "block";
+		document.getElementById('allMenu').style.display = "none";
+		document.getElementById("iframe").style.display = "none";
+		document.getElementById("iframe").src = 'package/loading.html';
+		//換頁
+		//document.getElementById("display").style.filter = "progid:DXImageTransform.Microsoft.Fade(duration=1)";// "progid:DXImageTransform.Microsoft.Pixelate();";
+		//document.getElementById("display").filters.item(0).apply();
+		document.getElementById("display").src = display[i];
+		//document.getElementById("display").filters.item(0).play();
+		document.getElementById("iframe").src = 'package/loading.html';
+	}else{
+		//換html
+		document.getElementById("display").style.display = "none";
+		document.getElementById('allMenu').style.display = "none";
+		document.getElementById("iframe").style.display = "block";
+		document.getElementById("iframe").src = display[i];
+		document.getElementById("display").src = "package/loading.png";		
+	}
+	document.getElementById("page").innerHTML = i+1;
+	document.getElementById("timeOut").innerHTML = showTime(display[i]);
+	//錨點定位	
+	var h = 0;	
+	
+	/*if( display[i]=="17.jpg"){
+		h= 500;
+	}
+	
+	if( display[i]=="41.jpg"){
+		h= 370;
+	}
+	
+		if( display[i]=="32.jpg"){
+		h= 400;
+	}
+	
+
+	
+	if( display[i]=="37.jpg" || display[i]=="37_1.jpg"){
+		h= 306;
+	}
+	
+	if( display[i]=="22.jpg" || display[i]=="23.jpg" || display[i]=="24.jpg"  || display[i]=="50.jpg"){
+		h = 400;
+	}
+	
+	if( display[i]=="27.jpg" || display[i]=="28.jpg" || display[i]=="29.jpg" || display[i]=="30.jpg"){
+		h = 300; //全文檢索
+	}
+	
+	if(typeof(console)!=null){
+		console.log(window.pageYOffset + "h" + h); //實際scroll高度		
+	}*/
+	
+	document.getElementById("display").onload = function(){
+		window.scrollTo(0,h);
+	}
+}
+var intervalID;
+
+function showMenuDelay(){
+	clearInterval(intervalID);
+	intervalID = setInterval(showMenu,1);
+}
+function hideMenuDelay(){
+	clearInterval(intervalID);
+	intervalID = setInterval(hideMenu,1000);
+}
+
+function showMenu(){
+	document.getElementById('menu').getElementsByTagName('ul').item(0).style.display="block";
+}
+
+function hideMenu(){
+	document.getElementById('menu').getElementsByTagName('ul').item(0).style.display="none";
+}
+
+var b = new BrowserInfo();
+function BrowserInfo()
+{
+  this.name = navigator.appName;
+  this.codename = navigator.appCodeName;
+  this.version = navigator.appVersion.substring(0,4);
+  this.platform = navigator.platform;
+  this.javaEnabled = navigator.javaEnabled();
+  this.screenWidth = screen.width;
+  this.screenHeight = screen.height;
+}
+
+document.onkeydown = function(){
+	  var oEvent = window.event;
+	  //alert(oEvent.keyCode);
+     if (oEvent.keyCode == 39) {
+      	gotoNext()
+     }else if (oEvent.keyCode == 37) {
+     	gotoPre()
+     }
+}
+</script>
+</head>
+<body>
+<div class="main" id="showAll">
+  <div id="menu" onmouseover="showMenuDelay();" onmouseout="hideMenuDelay();">
+    <ul id="submenu" style="display:none; margin-top:30px;" >
+      <li></li>
+    </ul>
+  </div>
+  <!-- 頁次 -->
+  <div id="page" style="position:fixed; display:none; left:0; height: 40px; line-height:40px; text-align:center; color:#FFF; width: 30px;">1</div>
+  <!-- 目錄頁 -->
+  <div id="allMenu" style="display:none; border:solid 1px #666; width:1000px; min-height:720px; background:#333333;">
+  		<h2 style="color:#FFFFFF; text-align:center; margin-top:30px;">目錄頁</h2>
+  		<div id="allMenuInner"></div>
+  </div> 
+  <!-- 圖片 -->
+  <img src="package/loading.png" name="display" id="display"/>
+  <!-- 網頁 -->
+  <iframe style="display:none" src="package\loading.html" allowtransparency="true" id="iframe" width="100%" height="720" name="iframe" frameborder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="yes" noresize>Loading...</iframe>
+  <div id="timeOut" style="position:fixed; top:0px; margin:auto; width:100px; color:#AAAAAA; font-family:Verdana, Geneva, sans-serif; font-weight:normal;"></div>
+  <!-- 換頁按鈕 -->
+  <div id="pageNav" style="position:fixed; bottom:30px; margin:auto; width:1000px;">
+    <div id="nav"  onclick="gotoNext()"></div>
+    <div id="nav2" onclick="gotoPre()"></div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" >
+	var submenuUL = "";
+	<!-- 產生左邊目錄頁 -->
+	for(j=0;j<dir.length;j++){
+		submenuUL += "<li onclick='i="+searchPage(dir[j][1])+";show();'>"+(j+1)+"-"+dir[j][0]+"</li>";
+	}
+	document.getElementById('submenu').innerHTML = submenuUL;
+
+	<!-- 產生所有選單 -->
+	var MenuHTML = "";
+	
+	//20120306 james 由橫式改直式
+	
+	//20120307 james 修改bug 
+	//總頁數必須為四的倍數才能跑完所有頁面
+	//偵測當內容為未定義時，不產生html
+	//並跑完後面的頁面
+	
+	//20120313 james 修正bug
+	//除了四倍數以外，應該還要計算總行數是否完整
+	//maxRow算出最多有幾列(由上而下數) 
+			
+	var maxRow = Math.ceil(display.length/4); 
+	var totalCount = maxRow*4;
+	
+	for(f=0;f<totalCount;f++){		
+		//rowID 算出目前為第幾列(由上而下)
+		var rowID = f%4;
+		//lowID  算出目前為第幾行(由左至右)
+		var lowID = Math.floor(f/4)+1;
+		
+		//由左而右取得id值
+		var pageCount = lowID+rowID*maxRow;
+		//偵測陣列數已超過資料數，而無法產生資料時，不產生選單。
+		if(displayTitle[pageCount-1]){
+			MenuHTML += "<div onclick = 'i="+searchPage(display[pageCount-1])+";show();'>第"+pageCount+"頁 - " + displayTitle[pageCount-1]+" </div>";
+		}else{
+			//MenuHTML += "<div></div>";	
+		}		
+		if(rowID==3){
+			MenuHTML +="<br style='clear:both'/>";
+		}
+		//原來的由左至右
+		//MenuHTML += "<div onclick = 'i="+searchPage(display[f])+";show();'>"+(f+1)+"頁 - "+displayTitle[f]+"</div>";
+	}
+	
+	document.getElementById('allMenuInner').innerHTML = MenuHTML;	
+	
+	//if((b.name.indexOf("Microsoft"))){
+	//alert("請使用IE8以上瀏覽器");	
+	//document.getElementById("showAll").style.display = "none";
+	//}
+	
+	function searchPage(str){
+		for(k=0;k<display.length;k++){
+			if(display[k]==str) return k;		
+		}
+	}	
+	show();
+</script>
+</html>
